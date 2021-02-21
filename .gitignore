@@ -1,0 +1,21 @@
+### Visual Studio Code ###
+.vscode/
+
+### Git ###
+.git/
+
+### Other Files ###
+*.out
+*.sum
+*env.json
+.env
+*credentials.json
+cover.html
+fmtcoverage.html
+go.sum
+debug/
+vendor/
+nfe-producer-api
+check-in-api
+.env.dev
+.scannerwork/
