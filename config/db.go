@@ -1,6 +1,7 @@
 package config
 
 import (
+	"carrinho-api-gorm/model"
 	"fmt"
 
 	"github.com/jinzhu/gorm"
@@ -19,7 +20,10 @@ func InitDb(user, password, host, dbName string, port int) (*gorm.DB, error) {
 
 	db.LogMode(true)
 
-	//db.Debug().AutoMigrate(&model.Carrinho{})
+	db.Debug().AutoMigrate(
+		&model.Carrinho{},
+		&model.ItensCarrinho{},
+	)
 
 	return db, nil
 }

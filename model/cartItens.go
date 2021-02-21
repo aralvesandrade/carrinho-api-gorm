@@ -13,3 +13,8 @@ type ItensCarrinho struct {
 	SubTotal      float64 `gorm:"column:SubTotal;"`
 	SKU           string  `gorm:"column:Sku;"`
 }
+
+//TableName ...
+func (ItensCarrinho) TableName() string {
+	return "itenscarrinho"
+}

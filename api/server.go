@@ -73,10 +73,10 @@ func (s *Server) StartServer() {
 		Handler:      handlers.CompressHandler(handlers.RecoveryHandler()(c.Handler(router))),
 	}
 
+	fmt.Printf("Starting API on port %d\n", port)
+
 	if error := httpServer.ListenAndServe(); error != nil {
 		fmt.Println(error)
 		os.Exit(1)
 	}
-
-	fmt.Printf("Starting API on port %d", port)
 }
