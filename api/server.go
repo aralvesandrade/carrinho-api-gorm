@@ -23,11 +23,13 @@ type Server struct{}
 
 //StartServer ...
 func (s *Server) StartServer() {
-	user := "root"
-	password := "root"
-	host := "localhost"
+
+	user := os.Getenv("MYSQL_USER")
+	password := os.Getenv("MYSQL_PASSWORD")
+	host := os.Getenv("MYSQL_HOST")
 	port := 3306
-	dbName := "carrinho"
+	port, _ = strconv.Atoi(os.Getenv("MYSQL_PORT"))
+	dbName := os.Getenv("MYSQL_NAME")
 
 	mysql, error := config.InitDb(user, password, host, dbName, port)
 
@@ -72,8 +74,6 @@ func (s *Server) StartServer() {
 		WriteTimeout: 300 * time.Second,
 		Handler:      handlers.CompressHandler(handlers.RecoveryHandler()(c.Handler(router))),
 	}
-
-	fmt.Printf("Starting API on port %d\n", port)
 
 	if error := httpServer.ListenAndServe(); error != nil {
 		fmt.Println(error)
