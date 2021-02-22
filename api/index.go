@@ -23,7 +23,6 @@ type Server struct{}
 
 //StartServer ...
 func (s *Server) StartServer() {
-
 	user := os.Getenv("MYSQL_USER")
 	password := os.Getenv("MYSQL_PASSWORD")
 	host := os.Getenv("MYSQL_HOST")
